@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Counter</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+
+        height: 100vh;
+        margin: 0;
+        padding: 10px;
+        box-sizing: border-box;
+        background-image: url(./WhatsApp\ Image\ 2024-10-11\ at\ 4.56.38\ PM.jpeg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+
+      .timer-container {
+        margin-top: 130px;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+        text-align: center;
+        width: 100%;
+        max-width: 600px;
+        box-sizing: border-box;
+      }
+
+      .timer-header {
+        font-size: 24px;
+        color: #f8eb80;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .timer {
+        font-size: 32px;
+        color: #ffffff;
+        font-weight: bold;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+
+      .time-unit {
+        margin: 10px;
+        padding: 10px 15px;
+        background-color: #333;
+        border-radius: 10px;
+        font-size: 28px;
+        color: #f8eb80;
+        flex: 1 1 40%;
+        max-width: 150px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      .label {
+        display: block;
+        font-size: 16px;
+        color: #ffffff;
+        margin-top: 5px;
+      }
+
+      @media (min-width: 768px) {
+        .timer-header {
+          font-size: 32px;
+        }
+        .timer {
+          font-size: 48px;
+        }
+        .time-unit {
+          margin: 0 15px;
+          padding: 10px 20px;
+          font-size: 36px;
+          max-width: 180px;
+        }
+        .label {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="timer-container">
+      <div class="timer-header">NASER HAAG NASER MAG</div>
+      <div class="timer">
+        <div>
+          <span id="days" class="time-unit">0</span>
+          <span class="label">Days</span>
+        </div>
+        <div>
+          <span id="hours" class="time-unit">0</span>
+          <span class="label">Hours</span>
+        </div>
+        <div>
+          <span id="minutes" class="time-unit">0</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div>
+          <span id="seconds" class="time-unit">0</span>
+          <span class="label">Seconds</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Set the date from which we want to count time
+      const startDate = new Date("Sep 27, 2024 22:37:00").getTime();
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const timeElapsed = now - startDate;
+
+        const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (timeElapsed % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+      }
+
+      // Update the timer every second
+      setInterval(updateTimer, 1000);
+    </script>
+  </body>
+</html>
